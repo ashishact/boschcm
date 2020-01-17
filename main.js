@@ -181,6 +181,10 @@ window.onload = function () {
             web3.eth.getTransaction(result.transactionHash).then(data => {
                 console.log(data);
                 got_tx(data);
+
+                // update block ui
+                document.getElementById("blockdiv").innerHTML = get_block_html(temperature_series.data[temperature_series.data.length-1]);
+                
             }).catch(err => {
                 console.warn(err);
             });
@@ -210,9 +214,15 @@ window.onload = function () {
                 }
                 graph_sort_temperature_series();
 
-                // add current time
+                // update block ui
+                document.getElementById("blockdiv").innerHTML = get_block_html(temperature_series.data[temperature_series.data.length-1]);
+
+
+
+                // add current time with null
                 temperature_series.data.push({ date: new this.Date(), temperature: null });
                 temperature_series.invalidateData();
+
             }
             else {
                 console.log(json);
