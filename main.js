@@ -51,7 +51,15 @@ let init_graph = function () {
 
 
         bullet.events.on("hit", function(event) {
+            
             document.getElementById("blockdiv").innerHTML = get_block_html(event.target.dataItem.dataContext);
+
+            
+            navigator.clipboard.writeText(JSON.stringify(event.target.dataItem.dataContext.tx, null, 4)).then(function() {
+                console.log('Async: Copying to clipboard was successful!');
+              }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+              });
         })
 
         
@@ -158,7 +166,7 @@ window.onload = function () {
             if (temperature_series.data.length && !(temperature_series.data[temperature_series.data.length - 1].temperature)) temperature_series.data.pop();
 
 
-            temperature_series.data.push({ date: date, temperature: temp, hash: hash, input: i, nonce: tx.nonce, datestr: date.toString(), blockhash: tx.blockHash });
+            temperature_series.data.push({ date: date, temperature: temp, hash: hash, input: i, nonce: tx.nonce, datestr: date.toString(), blockhash: tx.blockHash, tx: tx});
             if (!do_not_update_graph) temperature_series.invalidateData();
         }
     }
@@ -171,7 +179,7 @@ window.onload = function () {
         if (!error) {
             // console.log(result);
             web3.eth.getTransaction(result.transactionHash).then(data => {
-                // console.log(data);
+                console.log(data);
                 got_tx(data);
             }).catch(err => {
                 console.warn(err);
