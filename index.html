@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Condition Monitoring</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
+
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+
+    <style>
+        #graphdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        #blockdiv{
+            padding: 20px;
+            background-color: rgb(249, 249, 251);
+            color: rgba(0,0,0,.65);
+        }
+
+        #deviceid{
+            /* margin-bottom: 33px; */
+            color: rgba(0, 0, 0, 0.85);
+            font-weight: 500;
+            font-family: DINPro, -apple-system, system-ui, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
+            background-color: rgb(249, 249, 251); 
+            text-align: center;
+            font-size: 1.2em;
+            
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="deviceid">BLOCKCHAIN DATA</div>
+    <div id="graphdiv"></div>
+    <div id="blockdiv"></div>
+
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
