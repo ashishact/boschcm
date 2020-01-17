@@ -180,11 +180,14 @@ window.onload = function () {
             // console.log(result);
             web3.eth.getTransaction(result.transactionHash).then(data => {
                 console.log(data);
-                got_tx(data);
-
-                // update block ui
-                document.getElementById("blockdiv").innerHTML = get_block_html(temperature_series.data[temperature_series.data.length-1]);
                 
+                if(data.from == address){
+                    got_tx(data);
+    
+                    // update block ui
+                    document.getElementById("blockdiv").innerHTML = get_block_html(temperature_series.data[temperature_series.data.length-1]);
+                }
+
             }).catch(err => {
                 console.warn(err);
             });
