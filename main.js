@@ -181,7 +181,7 @@ window.onload = function () {
             web3.eth.getTransaction(result.transactionHash).then(data => {
                 console.log(data);
                 
-                if(data.from == address){
+                if(data.from.toUpperCase() == address.toUpperCase()){
                     got_tx(data);
     
                     // update block ui
